@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from "../assets/images/logo.jpg";
+import { Button } from "~/components/ui/button";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
           sizes="(max-width: 648px) 100vw, 648px"
         />
       </div>
+      <Button>Contact</Button>
     </main>
   );
 }
