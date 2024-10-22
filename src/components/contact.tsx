@@ -31,6 +31,7 @@ export default function ContactDialog() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
     try {
+      console.log(data)
       // const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT', {
       //   method: 'POST',
       //   headers: {

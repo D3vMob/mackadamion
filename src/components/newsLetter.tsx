@@ -1,40 +1,46 @@
-'use client'
+"use client";
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { Button } from "~/components/ui/button"
-import { Input } from "~/components/ui/input"
-import { Form, FormControl, FormField, FormItem, FormMessage } from "~/components/ui/form"
-import { Send } from "lucide-react"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "~/components/ui/form";
+import { Send } from "lucide-react";
 
-const formSchema = z.object({
+const newsLetterSchema = z.object({
   email: z.string().email("Invalid email address"),
-})
+});
 
 export default function NewsLetter() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
+  const form = useForm<z.infer<typeof newsLetterSchema>>({
+    values: {
       email: "",
     },
-  })
+    resolver: zodResolver(newsLetterSchema),
+  });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    setIsSubmitting(true)
+  const onSubmit = async (values: z.infer<typeof newsLetterSchema>) => {
+    setIsSubmitting(true);
     // Here you would typically handle the newsletter subscription
-    console.log("Subscribing email:", values.email)
+    console.log("Subscribing email:", values.email);
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    form.reset()
-  }
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setIsSubmitting(false);
+    // form.reset();
+  };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="mx-auto w-full max-w-md">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex space-x-2">
           <FormField
@@ -50,10 +56,10 @@ export default function NewsLetter() {
             )}
           />
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Subscribing..." : (<Send />)}
+            {isSubmitting ? "Subscribing..." : <Send />}
           </Button>
         </form>
       </Form>
     </div>
-  )
+  );
 }
