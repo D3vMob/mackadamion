@@ -1,9 +1,15 @@
 - [x] set domain name
 - [x] start project nextjs
-- [ ] create pipeline
-- [ ] create db
+- [x] create pipeline
+- [x] create db
+  - [ ] create tables
+    - [ ] mails
+    - [ ] events
+    - [ ] newsletters
 - [ ] create routing
+  - [ ] create CMS
 - [ ] create front page
 - [ ] create CMS
+  - [ ] create form for events
 - [ ] create Contact form
 - [ ] create Newsletter form

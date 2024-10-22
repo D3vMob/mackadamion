@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logo from "../assets/images/logo.jpg";
-import { Button } from "~/components/ui/button";
+import ContactDialog from "~/components/contact";
+import NewsLetter from "~/components/newsLetter";
 
 export default function HomePage() {
   return (
@@ -15,7 +16,11 @@ export default function HomePage() {
           sizes="(max-width: 648px) 100vw, 648px"
         />
       </div>
-      <Button>Contact</Button>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-8 pt-8">
+
+      <ContactDialog />
+      <NewsLetter />
+      </div>
     </main>
   );
 }
