@@ -13,7 +13,9 @@ import {
   FormItem,
   FormMessage,
 } from "~/components/ui/form";
-import { Send } from "lucide-react";
+import { LoaderCircle, Send } from "lucide-react";
+import { addMailjetContact } from "~/lib/newsLetter";
+import { toast } from "sonner";
 
 const newsLetterSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -31,12 +33,19 @@ export default function NewsLetter() {
 
   const onSubmit = async (values: z.infer<typeof newsLetterSchema>) => {
     setIsSubmitting(true);
-    // Here you would typically handle the newsletter subscription
-    console.log("Subscribing email:", values.email);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-    // form.reset();
+    try {
+      const result = await addMailjetContact(values);
+      if (result.success) {
+        toast.success(result.data.message);
+      } else {
+        toast.error(result.error);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+      form.reset();
+    }
   };
 
   return (
@@ -49,14 +58,21 @@ export default function NewsLetter() {
             render={({ field }) => (
               <FormItem className="flex-grow">
                 <FormControl>
-                  <Input placeholder="Enter your email" {...field} />
+                  <Input
+                    placeholder="Newsletter (enter your email)"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage className="absolute mt-1 text-xs" />
               </FormItem>
             )}
           />
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Subscribing..." : <Send />}
+            {isSubmitting ? (
+              <LoaderCircle className="animate-spin" />
+            ) : (
+              <Send />
+            )}
           </Button>
         </form>
       </Form>
