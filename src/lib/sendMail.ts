@@ -1,12 +1,12 @@
 "use server";
 
 import { env } from "~/env";
-import { Client, type SendEmailV3_1, type LibraryResponse } from "node-mailjet";
+import { Client, type Common, SendEmailV3_1 } from "node-mailjet";
 
-const EMAIL_RECEIVER = env.NEXT_PUBLIC_EMAIL_RECEIVER;
+const EMAIL_RECEIVER = env.EMAIL_RECEIVER;
 
 const mailjet = new Client({
-  apiKey: env.NEXT_PUBLIC_MAILJET_API,
+  apiKey: env.MAILJET_API,
   apiSecret: env.MAILJET_SECRET,
 });
 
@@ -20,8 +20,8 @@ export const sendMail = async ({
   subject: string;
   text?: string;
   html?: string;
-}) => {
-  const data: SendEmailV3_1.Body = {
+}) =>  {
+  const data: SendEmailV3_1.Body<Common.UnknownRec, Common.UnknownRec> = {
     Messages: [
       {
         From: {
@@ -37,20 +37,30 @@ export const sendMail = async ({
           Name: "Danny",
         },
         Subject: subject,
-        HTMLPart: `<h3>${!sendTo ? "NEW MESSAGE FROM WEBSITE:" : "Thank you for your message!"} </h3><br />${html}`,
+        HTMLPart: `<h3>${!sendTo ? "NEW MESSAGE FROM WEBSITE:" : "Thank you for your message!"}</h3><br />${html}`,
         TextPart: `NEW MESSAGE FROM WEBSITE: ${text}`,
         TemplateLanguage: true,
       },
     ],
   };
+  
+  try {
+    const result = await mailjet.post("send", { version: "v3.1" }).request<SendEmailV3_1.Response>(data);
 
-  const result: LibraryResponse<SendEmailV3_1.Response> = await mailjet
-    .post("send", { version: "v3.1" })
-    .request(data);
-
-  // const Status  = result.body.Messages[0];
-  return {
-    success: true,
-    data: result.body.Messages[0],
-  };
+    const messageStatus = result.body.Messages[0]!;
+    return {
+      success: messageStatus.Status.toLowerCase() === "success",
+      data: {
+        status: messageStatus.Status,
+        to: messageStatus.To[0]?.Email,
+        messageId: messageStatus?.To[0]?.MessageID,
+      },
+    };
+  } catch (error) {
+    console.error("Mailjet error:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "An unknown error occurred",
+    };
+  }
 };

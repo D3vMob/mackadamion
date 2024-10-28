@@ -25,7 +25,7 @@ type ErrorResponse = {
 type ActionResponse = SuccessResponse | ErrorResponse;
 
 const mailjet = new Mailjet({
-  apiKey: env.NEXT_PUBLIC_MAILJET_API,
+  apiKey: env.MAILJET_API,
   apiSecret: env.MAILJET_SECRET,
 });
 
