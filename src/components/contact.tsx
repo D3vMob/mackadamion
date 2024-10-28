@@ -47,7 +47,6 @@ export default function ContactDialog() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      console.log(data);
       await sendMail({
         subject: data.subject,
         html: data.message,
