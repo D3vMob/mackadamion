@@ -76,7 +76,7 @@ export default function ContactDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="secondary">Contact Us</Button>
+        <Button variant="ghost">Contact Us</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
