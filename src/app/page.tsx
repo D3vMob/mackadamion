@@ -1,4 +1,5 @@
 import Image from "next/image";
+import logo from "../assets/images/logo.png";
 import ContactDialog from "~/components/contact";
 import NewsLetter from "~/components/newsLetter";
 
@@ -7,8 +8,10 @@ export default function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-start bg-black text-white">
       <div className="relative w-full px-2 py-2 md:max-w-lg pt-12">
         <Image
-          src="../assets/images/logo.png"
+          src={logo}
           alt="Logo"
+          width={0}
+          height={0}
           loading="lazy"
           className="object-cover"
           sizes="(max-width: 648px) 100vw, 648px"
