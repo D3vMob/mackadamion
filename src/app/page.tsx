@@ -10,12 +10,14 @@ export default function HomePage() {
         <Image
           src={logo}
           alt="Logo"
+          width={0}
+          height={0}
           loading="lazy"
           className="object-cover"
           sizes="(max-width: 648px) 100vw, 648px"
         />
       </div>
-      <div className="pt-1 text-center text-sm md:text-lg text-white/50">Growing artists , creating legacies and orchestrating success</div>
+      <div className="pt-1 text-center text-sm md:text-lg text-white/50">Creating legacies...</div>
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 pt-8">
 
       <ContactDialog />

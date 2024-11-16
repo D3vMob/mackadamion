@@ -1,6 +1,8 @@
 import "~/styles/globals.css";
 import { Toaster } from "sonner";
 
+import { env } from "~/env.js";
+
 import { GeistSans } from "geist/font/sans";
 
 import type { Metadata } from 'next';
@@ -74,9 +76,7 @@ export const metadata: Metadata = {
   
   // Verification for search consoles
   verification: {
-    google: "your-google-site-verification",
-    yandex: "your-yandex-verification",
-    yahoo: "your-yahoo-verification",
+    google: env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
   },
   
   // Alternative languages
