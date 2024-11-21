@@ -6,6 +6,7 @@ import { env } from "~/env.js";
 import { GeistSans } from "geist/font/sans";
 
 import type { Metadata } from 'next';
+import GoogleAnalytics from "~/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: "Mackadamion Music Agency | Global Music Production and Advocacy Led by Danny Scopelleti",
@@ -97,6 +98,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
+      <GoogleAnalytics />
       <Toaster />
       <body>{children}</body>
     </html>
