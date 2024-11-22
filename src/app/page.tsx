@@ -3,6 +3,8 @@ import logo from "../assets/images/logo.png";
 import ContactDialog from "~/components/contact";
 import NewsLetter from "~/components/newsLetter";
 
+export const revalidate = 3600 // revalidate every hour
+
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start bg-black text-white">
