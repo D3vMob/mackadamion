@@ -14,7 +14,6 @@ export const env = createEnv({
     SMTP_SERVER_HOST: z.string(),
     SMTP_EMAIL: z.string(),
     SMTP_PASSWORD: z.string(),
-    CLERK_SECRET_KEY: z.string(),
     MAILJET_SECRET: z.string(),
     MAILJET_API: z.string(),
     EMAIL_RECEIVER: z.string(),
@@ -27,7 +26,6 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string(),
     NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string(),
   },
@@ -43,9 +41,6 @@ export const env = createEnv({
     SMTP_EMAIL: process.env.SMTP_EMAIL,
     SMTP_PASSWORD: process.env.SMTP_PASSWORD,
     EMAIL_RECEIVER: process.env.EMAIL_RECEIVER,
-    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     MAILJET_SECRET: process.env.MAILJET_SECRET,
     MAILJET_API: process.env.MAILJET_API,
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION:
