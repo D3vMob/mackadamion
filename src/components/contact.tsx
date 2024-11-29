@@ -19,6 +19,7 @@ import { z } from "zod";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { sendMail } from "~/lib/sendMail";
 import { toast } from "sonner";
+import { motion } from "motion/react";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -76,7 +77,22 @@ export default function ContactDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
+        <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          delay: 2.5,
+          duration: 0.6,
+          ease: "linear",
+          repeat: 0,
+        }}
+        >
         <Button variant="ghost">Contact Us</Button>
+        </motion.div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

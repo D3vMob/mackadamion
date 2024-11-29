@@ -16,6 +16,7 @@ import {
 import { LoaderCircle, Send } from "lucide-react";
 import { addMailjetContact } from "~/lib/newsLetter";
 import { toast } from "sonner";
+import { motion } from "motion/react";
 
 const newsLetterSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -49,7 +50,20 @@ export default function NewsLetter() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-md">
+    <motion.div
+    initial={{
+      opacity: 0,
+    }}
+    animate={{
+      opacity: 1,
+    }}
+    transition={{
+      delay: 1.5,
+      duration: 0.6,
+      ease: "linear",
+      repeat: 0,
+    }}
+    className="mx-auto w-full max-w-md">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex space-x-2">
           <FormField
@@ -76,6 +90,6 @@ export default function NewsLetter() {
           </Button>
         </form>
       </Form>
-    </div>
+    </motion.div>
   );
 }
