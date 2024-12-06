@@ -2,14 +2,16 @@
 - [x] start project nextjs
 - [x] create pipeline
 - [x] create db
-  - [ ] create tables
-    - [ ] mails
-    - [ ] events
-    - [ ] newsletters
-- [ ] create routing
-  - [ ] create CMS
-- [ ] create front page
+- [ ] finish landing page
+- [ ] add clerk auth
+- [ ] add trpc
+- [ ] create schema
+- [ ] create CRUD methods
 - [ ] create CMS
-  - [ ] create form for events
-- [ ] create Contact form
-- [ ] create Newsletter form
+  - [ ] create Model
+  - [ ] create artist page
+    - [ ] create artist form
+    - [ ] create social link app
+- [ ] create form for events
+  - [ ] tag artists (to make it appear on their page)
+- [x] create Newsletter form

@@ -51,19 +51,20 @@ export default function NewsLetter() {
 
   return (
     <motion.div
-    initial={{
-      opacity: 0,
-    }}
-    animate={{
-      opacity: 1,
-    }}
-    transition={{
-      delay: 1.5,
-      duration: 0.6,
-      ease: "linear",
-      repeat: 0,
-    }}
-    className="mx-auto w-full max-w-md">
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      transition={{
+        delay: 1.5,
+        duration: 0.6,
+        ease: "linear",
+        repeat: 0,
+      }}
+      className="mx-auto md:mx-0 md:pe-4"
+    >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex space-x-2">
           <FormField
@@ -75,17 +76,23 @@ export default function NewsLetter() {
                   <Input
                     placeholder="Newsletter (enter your email)"
                     {...field}
+                    className="w-56 bg-white/30 border-none"
                   />
                 </FormControl>
                 <FormMessage className="absolute mt-1 text-xs" />
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={isSubmitting}>
+          <Button
+            type="submit"
+            variant="secondary"
+            className="bg-white/30"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? (
-              <LoaderCircle className="animate-spin" />
+              <LoaderCircle className="animate-spin text-gray-500" />
             ) : (
-              <Send />
+              <Send className="text-gray-500" />
             )}
           </Button>
         </form>

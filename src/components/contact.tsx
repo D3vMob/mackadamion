@@ -91,7 +91,7 @@ export default function ContactDialog() {
           repeat: 0,
         }}
         >
-        <Button variant="ghost">Contact Us</Button>
+        <Button variant="ghost" className="text-gray-500">Contact Us</Button>
         </motion.div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

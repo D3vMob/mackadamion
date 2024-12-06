@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import logo from "../assets/images/logo.svg";
-import { motion, useAnimationFrame } from "motion/react";
+import { motion, scroll } from "motion/react";
 import { useRef } from "react";
 import { NodeNextRequest } from "next/dist/server/base-http/node";
 
 export default function Main() {
-  const ref = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   // useAnimationFrame((t) => {
   //   const rotate = Math.sin(t / 10000) * 200;
   //   const y = (1 + Math.sin(t / 1000)) * 50;
@@ -16,7 +16,7 @@ export default function Main() {
   //   }
   // })
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <motion.div
         initial={{
           opacity: 0,
@@ -36,7 +36,7 @@ export default function Main() {
         <Image
           src={logo as string}
           alt="Logo"
-          width={300}
+          width={600}
           height={50}
           loading="lazy"
           className="object-cover"
@@ -59,7 +59,7 @@ export default function Main() {
         ease: "linear",
         repeat: 0,
       }}
-      className="pt-1 text-center text-sm md:text-lg text-white/50">Creating legacies...</motion.div>
+      className="pt-1 text-center text-2xl md:text-4xl text-white/50">Creating legacies...</motion.div>
     </div>
   );
 }

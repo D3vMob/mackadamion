@@ -56,6 +56,28 @@
     --chart-5: 340 75% 55%
   }
 }
+
+footer {
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: radial-gradient(
+    rgba(0, 0, 0, 0) 1px,
+    rgba(48, 47, 46, 0.3) 1px
+  );
+  background-size: 4px 4px;
+  backdrop-filter: blur(5px);
+}
+
+
+
+
+
+
+
+
+
 @layer base {
   * {
     @apply border-border;

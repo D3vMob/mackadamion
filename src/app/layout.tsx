@@ -4,7 +4,6 @@ import { Toaster } from "sonner";
 import { env } from "~/env.js";
 
 import { GeistSans } from "geist/font/sans";
-
 import type { Metadata } from 'next';
 import GoogleAnalytics from "~/components/GoogleAnalytics";
 
@@ -100,7 +99,9 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <GoogleAnalytics />
       <Toaster />
-      <body>{children}</body>
+        <body>
+            {children}
+          </body>
     </html>
   );
 }
