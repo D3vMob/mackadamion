@@ -2,19 +2,9 @@
 
 import Image from "next/image";
 import logo from "../assets/images/logo.svg";
-import { motion, scroll } from "motion/react";
-import { useRef } from "react";
-import { NodeNextRequest } from "next/dist/server/base-http/node";
+import { motion} from "motion/react";
 
 export default function Main() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  // useAnimationFrame((t) => {
-  //   const rotate = Math.sin(t / 10000) * 200;
-  //   const y = (1 + Math.sin(t / 1000)) * 50;
-  //   if (ref.current) {
-  //     ref.current.style.transform = `translateY(${y}px) rotateY(${rotate}deg)`;
-  //   }
-  // })
   return (
     <div className="flex flex-col min-h-screen">
       <motion.div
@@ -59,7 +49,7 @@ export default function Main() {
         ease: "linear",
         repeat: 0,
       }}
-      className="pt-1 text-center text-2xl md:text-4xl text-white/50">Creating legacies...</motion.div>
+      className="pt-2 text-center text-2xl md:text-4xl text-white/50">Crafting Legacies...</motion.div>
     </div>
   );
 }

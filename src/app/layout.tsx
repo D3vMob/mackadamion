@@ -2,21 +2,32 @@ import "~/styles/globals.css";
 import { Toaster } from "sonner";
 
 import { env } from "~/env.js";
-
+import { ClerkProvider } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { GeistSans } from "geist/font/sans";
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 import GoogleAnalytics from "~/components/GoogleAnalytics";
+import { TRPCReactProvider } from "~/trpc/react";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Mackadamion Music Agency | Global Music Production and Advocacy Led by Danny Scopelleti",
-  description: "Mackadamion is a premier music and placement agency founded by seasoned singer-songwriter Danny Scopelleti. With nearly 20 years of industry expertise, we produce music for artists across New York, Los Angeles, Montreal, and Europe. In 2024, we showcased our impact by presenting the official ARDN theme song at the United Nations Assembly, highlighting our dedication to global music and advocacy.",
-  
+  title:
+    "Mackadamion Music Agency | Global Music Production and Advocacy Led by Danny Scopelleti",
+  description:
+    "Mackadamion is a premier music and placement agency founded by seasoned singer-songwriter Danny Scopelleti. With nearly 20 years of industry expertise, we produce music for artists across New York, Los Angeles, Montreal, and Europe. In 2024, we showcased our impact by presenting the official ARDN theme song at the United Nations Assembly, highlighting our dedication to global music and advocacy.",
+
   // Basic metadata
-  keywords: ["music agency", "music production", "Danny Scopelleti", "global music", "music advocacy"],
+  keywords: [
+    "music agency",
+    "music production",
+    "Danny Scopelleti",
+    "global music",
+    "music advocacy",
+  ],
   authors: [{ name: "Danny Scopelleti" }],
   creator: "Danny Scopelleti",
   publisher: "Mackadamion Music Agency",
-  
+
   // Favicon and other icons
   icons: {
     icon: [
@@ -32,12 +43,13 @@ export const metadata: Metadata = {
       },
     ],
   },
-  
+
   // Open Graph metadata for social media
   openGraph: {
     type: "website",
     title: "Mackadamion Music Agency | Global Music Production",
-    description: "Premier music and placement agency led by Danny Scopelleti, serving artists globally with 20 years of expertise.",
+    description:
+      "Premier music and placement agency led by Danny Scopelleti, serving artists globally with 20 years of expertise.",
     url: "https://mackadamion.com",
     siteName: "Mackadamion Music Agency",
     images: [
@@ -50,7 +62,7 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
   },
-  
+
   // Twitter Card metadata
   // twitter: {
   //   card: "summary_large_image",
@@ -60,7 +72,7 @@ export const metadata: Metadata = {
   //   creator: "@mackadamion",
   //   site: "@mackadamion",
   // },
-  
+
   // Robots directives
   robots: {
     index: true,
@@ -73,12 +85,12 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  
+
   // Verification for search consoles
   verification: {
-    google: env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    google: env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
-  
+
   // Alternative languages
   alternates: {
     canonical: "https://mackadamion.com",
@@ -86,7 +98,7 @@ export const metadata: Metadata = {
       "en-US": "https://mackadamion.com",
     },
   },
-  
+
   // Additional metadata
   category: "Music Production",
   classification: "Music Agency",
@@ -96,12 +108,24 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <GoogleAnalytics />
-      <Toaster />
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <GoogleAnalytics />
+        <Toaster />
         <body>
-            {children}
-          </body>
-    </html>
+          <div className="absolute top-2 right-4 z-50 text-gray-500">
+            <Suspense fallback={<div>Loading...</div>}>
+              <SignedOut>
+                <SignInButton />
+            </SignedOut>
+            <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </Suspense>
+          </div>
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

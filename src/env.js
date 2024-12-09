@@ -17,17 +17,23 @@ export const env = createEnv({
     MAILJET_SECRET: z.string(),
     MAILJET_API: z.string(),
     EMAIL_RECEIVER: z.string(),
+    CLERK_SECRET_KEY: z.string(),
+    AWS_ACCESS_KEY_ID: z.string(),
+    AWS_SECRET_ACCESS_KEY: z.string(),
+    AWS_REGION: z.string(),
   },
-
+  
   /**
    * Specify your client-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars. To expose them to the client, prefix them with
    * `NEXT_PUBLIC_`.
-   */
-  client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
-    NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string(),
-    NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string(),
+  */
+ client: {
+   // NEXT_PUBLIC_CLIENTVAR: z.string(),
+   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string(),
+   NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string(),
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
+   NEXT_PUBLIC_AWS_BUCKET: z.string(),
   },
 
   /**
@@ -46,7 +52,13 @@ export const env = createEnv({
     NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION:
       process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    AWS_ACCESS_KEY_ID: process.env.AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+    AWS_REGION: process.env.AWS_REGION,
+    NEXT_PUBLIC_AWS_BUCKET: process.env.NEXT_PUBLIC_AWS_BUCKET,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

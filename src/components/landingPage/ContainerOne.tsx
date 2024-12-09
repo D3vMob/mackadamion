@@ -1,4 +1,7 @@
+"use client";
+
 import { Parallax } from "react-parallax";
+import ArtistPublic from "~/app/_components/artistPublic";
 import Banner03 from "~/assets/parallaxImages/depositphotos_19998309-stock-photo-musical-grunge-background.jpg";
 
 export const ContainerOne = () => {
@@ -27,6 +30,10 @@ export const ContainerOne = () => {
         objectFit: "cover",
         transform: "translate3d(0, 0, 0)",
       }}
-    ></Parallax>
+    >
+      <div className="flex items-center justify-center h-screen">
+        <ArtistPublic />
+      </div>
+    </Parallax>
   );
 };

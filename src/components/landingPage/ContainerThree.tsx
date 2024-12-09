@@ -1,3 +1,5 @@
+"use client";
+
 import { Parallax } from "react-parallax";
 import Banner03 from "~/assets/parallaxImages/devices.jpg";
 
