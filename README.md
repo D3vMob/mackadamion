@@ -11,6 +11,7 @@
   - [x] for artists
   - [x] for events
   - [x] for media
+  - [x] for team members
 - [x] create CMS
   - [x] create Model
   - [x] create list for artists CMS
