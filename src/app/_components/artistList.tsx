@@ -31,7 +31,6 @@ import { toast } from "sonner";
 export default function ArtistList() {
   const utils = api.useUtils();
   const [artists] = api.artist.getAllArtists.useSuspenseQuery();
-  
 
   const deleteArtist = api.artist.deleteArtist.useMutation({
     onSuccess: () => {
@@ -50,7 +49,7 @@ export default function ArtistList() {
 
   return (
     <div className="mx-auto flex max-w-screen-md flex-col gap-4">
-      <div className="text-2xl font-bold text-center pt-4">ROASTER</div>
+      <div className="pt-4 text-center text-2xl font-bold">ROASTER</div>
       {artists.map((artist) => (
         <Card key={artist.id} className="flex flex-row overflow-hidden">
           {artist.imageUrl && (

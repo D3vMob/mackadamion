@@ -10,8 +10,10 @@ export default async function ArtistDetailsPage(props: {
   const { artistDetailsId } = await props.params;
   return (
     <HydrateClient>
-      <BackButton />
-      <ArtistDetail artistId={parseInt(artistDetailsId)} />
+      <div className="pt-16">
+        <BackButton />
+        <ArtistDetail artistId={parseInt(artistDetailsId)} />
+      </div>
     </HydrateClient>
   );
 }

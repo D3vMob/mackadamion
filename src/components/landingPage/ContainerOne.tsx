@@ -17,7 +17,7 @@ export const ContainerOne = () => {
             position: "absolute",
             width: "100%",
             height: "100%",
-            transform: `translate3d(0, ${percentage * 50}px, 0)`,
+            transform: `translate3d(0, ${percentage * 30}px, 0)`,
           }}
         >
           <div className="flex items-center justify-center text-4xl font-extrabold text-white">

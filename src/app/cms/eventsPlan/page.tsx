@@ -17,7 +17,7 @@ export default function EventsPlanPage() {
             <div>DASHBOARD</div>
           </div>
         </Link>
-        <EventList />
+        <EventList headTitle={true} />
         <Link
           href="/cms/eventsPlan/event"
           className="fixed bottom-4 right-4 rounded-full bg-primary p-2 text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground hover:shadow-md"

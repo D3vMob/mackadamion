@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import GoogleAnalytics from "~/components/GoogleAnalytics";
 import { TRPCReactProvider } from "~/trpc/react";
 import { Suspense } from "react";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title:
@@ -82,19 +83,16 @@ export default function RootLayout({
       <html lang="en" className={`${GeistSans.variable}`}>
         <GoogleAnalytics />
         <body>
+          <Toaster />
           <div className="absolute right-4 top-2 z-50 text-gray-500">
-            <Suspense fallback={<div>Loading...</div>}>
-              <SignedOut>
-                <SignInButton />
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </Suspense>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
-          <TRPCReactProvider>
-            {children}
-          </TRPCReactProvider>
+          <TRPCReactProvider>{children}</TRPCReactProvider>
         </body>
       </html>
     </ClerkProvider>

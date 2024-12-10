@@ -7,13 +7,16 @@ import z from "node_modules/zod/lib";
 
 export const eventRouter = createTRPCRouter({
   getAllEvents: publicProcedure.query(({ ctx }) => {
-    return ctx.db.query.events.findMany();
+    return ctx.db.query.events.findMany({
+      orderBy: (events, { desc }) => [desc(events.date)],
+    });
   }),
   getArtistEvents: publicProcedure
     .input(z.object({ artistId: z.number() }))
     .query(({ ctx, input }) => {
       return ctx.db.query.events.findMany({
         where: eq(events.createdBy, input.artistId.toString()),
+        orderBy: (events, { desc }) => [desc(events.date)],
       });
     }),
   getEventById: publicProcedure
