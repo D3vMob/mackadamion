@@ -30,6 +30,7 @@ const config = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  productionBrowserSourceMaps: true,
 };
 
 export default config;

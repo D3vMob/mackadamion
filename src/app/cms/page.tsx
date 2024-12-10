@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { SignedIn, SignedOut } from "@clerk/nextjs";

@@ -9,11 +9,15 @@ import headShot from "~/assets/images/headshot.png";
 import Image from "next/image";
 import { api, HydrateClient } from "~/trpc/server";
 
+
+
 export default function HomePage() {
-  void api.artist.getAllArtists.prefetch();
-  void api.event.getAllEvents.prefetch();
+  if (typeof window !== 'undefined') {
+    void api.artist.getAllArtists.prefetch();
+    void api.event.getAllEvents.prefetch();
+  }
   return (
-    <HydrateClient>
+    <HydrateClient> 
       <main className="flex min-h-screen flex-col">
         <div className="md:max-w-lgitems-center relative z-10 w-full justify-start bg-black px-2 py-2 pt-12 text-white">
           <Main />

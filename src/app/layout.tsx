@@ -1,5 +1,4 @@
 import "~/styles/globals.css";
-import { Toaster } from "sonner";
 
 import { env } from "~/env.js";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -44,35 +43,6 @@ export const metadata: Metadata = {
     ],
   },
 
-  // Open Graph metadata for social media
-  openGraph: {
-    type: "website",
-    title: "Mackadamion Music Agency | Global Music Production",
-    description:
-      "Premier music and placement agency led by Danny Scopelleti, serving artists globally with 20 years of expertise.",
-    url: "https://mackadamion.com",
-    siteName: "Mackadamion Music Agency",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Mackadamion Music Agency - Global Music Production and Advocacy",
-      },
-    ],
-    locale: "en_US",
-  },
-
-  // Twitter Card metadata
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Mackadamion Music Agency | Global Music Production",
-  //   description: "Premier music and placement agency led by Danny Scopelleti, serving artists globally with 20 years of expertise.",
-  //   images: ["/twitter-image.jpg"],
-  //   creator: "@mackadamion",
-  //   site: "@mackadamion",
-  // },
-
   // Robots directives
   robots: {
     index: true,
@@ -111,19 +81,20 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
         <GoogleAnalytics />
-        <Toaster />
         <body>
-          <div className="absolute top-2 right-4 z-50 text-gray-500">
+          <div className="absolute right-4 top-2 z-50 text-gray-500">
             <Suspense fallback={<div>Loading...</div>}>
               <SignedOut>
                 <SignInButton />
-            </SignedOut>
-            <SignedIn>
+              </SignedOut>
+              <SignedIn>
                 <UserButton />
               </SignedIn>
             </Suspense>
           </div>
-          <TRPCReactProvider>{children}</TRPCReactProvider>
+          <TRPCReactProvider>
+            {children}
+          </TRPCReactProvider>
         </body>
       </html>
     </ClerkProvider>

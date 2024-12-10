@@ -27,10 +27,9 @@ import { SocialIcon } from "react-social-icons";
 import { Button } from "~/components/ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
 import { toast } from "sonner";
-import { revalidatePath } from "next/dist/server/web/spec-extension/revalidate";
 
 export default function ArtistList() {
-  const utils = api.useContext();
+  const utils = api.useUtils();
   const [artists] = api.artist.getAllArtists.useSuspenseQuery();
   
 
